@@ -34,7 +34,7 @@
 
 
     <!-- 配置ViewResolver。 可以用多个ViewResolver。 使用order属性排序。 InternalResourceViewResolver放在最后。 -->
-    <!--<bean
+    <bean
             class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="order" value="1"/>
         <property name="mediaTypes">
@@ -47,14 +47,14 @@
 
         <property name="defaultViews">
             <list>
-                &lt;!&ndash; JSON View &ndash;&gt;
+                <!-- JSON View -->
                 <bean
                         class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
                 </bean>
             </list>
         </property>
         <property name="ignoreAcceptHeader" value="true"/>
-    </bean>-->
+    </bean>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
