@@ -113,15 +113,17 @@ public class CourseController {
     }
 
 
+    //http://localhost:9090/courses/upload
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public String showUploadPage() {
         return "course_admin/file";
     }
 
+    //单文件上传
     @RequestMapping(value = "/doUpload", method = RequestMethod.POST)
     public String doUploadFile(@RequestParam("file") MultipartFile file) throws IOException {
 
-        if (file != null) {
+        if (!file.isEmpty()) {
             String originalFilename = file.getOriginalFilename();
 
             long fileSize = file.getSize();
@@ -135,7 +137,30 @@ public class CourseController {
             String s = new SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis());
             FileUtils.copyInputStreamToFile(file.getInputStream(), new File("D://aa", s + originalFilename));
 
+            // 转存文件
+            //file.transferTo(new File("D://aa", s + originalFilename));
 
+
+
+        } else {
+            log.info("file is empty");
+        }
+
+
+        return "success";
+    }
+
+    //多文件上传
+    @RequestMapping(value = "/doUploadMultifile", method = RequestMethod.POST)
+    public String doUploadMultifile(@RequestParam("file") MultipartFile[] files) throws IOException {
+        if (files != null && files.length > 0) {
+            for (int i = 0; i < files.length; i++) {
+                MultipartFile file = files[i];
+                doUploadFile(file);
+            }
+
+        } else {
+            log.info("files is null");
         }
 
 
