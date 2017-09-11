@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>home2</title>
 </head>
 <body>
-Hello Spring MVC!
-Here is iMooc!
-<br>
+home2
 ${msg}
+<br>
 </body>
 </html>

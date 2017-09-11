@@ -62,6 +62,21 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--注册拦截器-->
+    <mvc:interceptors>
+
+        <!--拦截指定路径下的请-->
+        <!--<mvc:interceptor>
+            <mvc:mapping path="/hello/viewAll"/>
+            <bean class="com.shkj.spring.interceptor.Test1Interceptor"></bean>
+        </mvc:interceptor>-->
+
+        <!--只写下面的一行配置，就是拦截所有的请求-->
+        <bean class="com.shkj.spring.interceptor.Test1Interceptor"></bean>
+
+
+    </mvc:interceptors>
+
 
     <!--200*1024*1024即200M resolveLazily属性启用是为了推迟文件解析，以便捕获文件大小异常 -->
     <bean id="multipartResolver"
